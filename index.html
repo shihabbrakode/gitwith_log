@@ -1,13 +1,76 @@
+-------------------------------------------------------------------------
+                    start part-1
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="gitHub_Project" content="width=device-width, initial-scale=1.0">
-    <title>git_Hub</title>
-</head>
-<body>
-    <h1>Welcome git hub ....home page</h1>
-    <h2>modified for again push to git_hub</h2>
+<h3>welcome</h3>
+{% for i in products %}
+<img src={{i.img.url}} style="width:50%;heiht:200px"><br>
+<!--<a href="/shop/{{i.id}}">{{i.name}}</a>-->
+<a href="{% url 'myapp:detail' i.id %}">{{i.name}}</a><br>
+{{i.id}}<br>
+{{i.desc}}<br>
+{{i.price}}<br><br>
+{% endfor %}
+<li><a href="{% url 'myapp:home' %}">Home</a></li>
 </body>
-</html>
+--------
+in shop_app:-
+from django.urls import path
+from .import views
+app_name='myapp'
+urlpatterns = [
+    path('',views.home,name='home'),
+    path('shop/<int:shop_id>',views.detail,name='detail'),
+
+]
+-------
+views.py:-
+def detail(request,shop_id):
+    print("ok..........")
+    product=shop.objects.get(id=shop_id)
+    print(product)
+    return render(request, 'detail.html', {'products': product})
+-------
+detail.html:-
+<img src={{products.img.url}} style="width:75%;heiht:300px"><br>
+{{products.name}}<br>
+{{products.price}}<br>
+{{products.desc}}<br>
+<li><a href="{% url 'myapp:home' %}">Home</a></li>
+----------
+in project url:-
+        from django.contrib import admin
+from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('shop_app.urls')),
+
+]
+urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+---------------
+in settings media:-
+        STATIC_URL = 'static/'
+STATICFILES_DIRS:[
+    os.path.join(BASE_DIR,'static')
+]
+STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+---------
+in settings templates:-
+'DIRS': [os.path.join(BASE_DIR,'templates')],
+----------
+
+        
+                **end part-1****
+-------------------------------------------------------------
+
+
+
+
+
+--------------
