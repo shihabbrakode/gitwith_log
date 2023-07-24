@@ -64,10 +64,19 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 in settings templates:-
 'DIRS': [os.path.join(BASE_DIR,'templates')],
 ----------
+message info:-
+      inhtml:-
+    {% for message in messages %}
+      {{message}}
+    {% endfor %}
+      in vies:-
+      messages.info(request,'invalid username or password')
+-------------
 
-        
+
                 **end part-1****
 -------------------------------------------------------------
+      
 
 
 
