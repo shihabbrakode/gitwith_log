@@ -75,7 +75,79 @@ message info:-
 
 
                 **end part-1****
--------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+      edit database file:-
+      {% extends 'base.html' %}
+{% block body %}
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="fw-bold">Update Product</h2>
+                </div>
+                <div class="class-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" Required name="name" value="{{object.name}}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input type="text" Required name="desc" value="{{object.desc}}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="text" Required name="price" value="{{object.price}}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            {% if object.img %}
+                            <img src="{{object.img.url}}" alt="image reboot" style="width:30px;height:30px;">
+                            {% endif %}
+                            <label class="form-label">Image</label>
+                            <input type="file" name="img" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <li><a href="{% url 'myapp:home' %}">Home</a></li><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+{% endblock %}
+---------------------------------
+      url:-
+          path('edit/<int:id>', views.edit, name='edit'),
+----------------------------------
+  import os
+      views.py:-
+        def edit(request,id):
+    obj=shop.objects.get(id=id)
+    if request.method == "POST":
+        if len(request.FILES) !=0:
+            if len(obj.img) >0:
+                os.remove(obj.img.path)
+            obj.img=request.FILES['img']
+        obj.name = request.POST.get('name')
+        obj.desc = request.POST.get('desc')
+        obj.price = request.POST.get('price')
+        obj.save()
+        return redirect('/')
+        messages.success(request,'Product update successfully')
+
+    return render(request,'update.html',{'object':obj})
+
+---------------------------------------------
+
+
+
+
       
 
 
