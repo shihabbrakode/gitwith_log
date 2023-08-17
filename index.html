@@ -271,7 +271,43 @@ value={"name":"sasi",'place':'malappuran'}
 print(value)
 print(value.get('name'))
 print((value.get('place')))
+-----------------------------------------------------------------------------------------
+url in projrct:-
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path,include
+from todo_app import views
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('todo_app.urls')),
+
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+-----------------------------
+  media settings in project settings:-
+  STATIC_URL = 'static/'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+---------------------------------
+database setting in project settins:-(mysql---in---xxamp)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'tododatabase',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+    }
+
+---------------------------------------------------------------------------------------------------------
 
 
 
