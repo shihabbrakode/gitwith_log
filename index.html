@@ -367,7 +367,33 @@ update.html:-
     </div>
 </div>
 {% endblock %}
-------------------------------------------------
+------------------------------
+Genericdelete:-
+  paa urls:-
+    path('detask/<int:pk>/', views.task_delete.as_view(), name='detask'), //(pk keyword is consant)
+      views.py:-  
+      class task_delete(DeleteView):
+    model=shop
+    template_name='delete.html'
+    context_object_name='task'
+    def get_success_url(self):
+        # return reverse_lazy('home',kwargs={'pk':self.object.id})
+        return reverse_lazy('home') //home is in url name='home'
+delete.html:-
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Do you want delete this...?</p>
+    <button type="submit">Conform</button>
+</form>
+     {% for message in messages %}
+     <p>{{message}}</p>
+     {% endfor %}
+
+{% endblock %}
+
+
 
 
 
