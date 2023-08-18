@@ -301,7 +301,40 @@ DATABASES = {
     }
 
 ---------------------------------------------------------------------------------------------------------
+Generic views:-
+in app url:-
+    path('ctask/',views.task_listview.as_view(),name='ctask'),
+in app views:-
+class task_listview(ListView):
+    model=shop
+    template_name='home.html'
+    context_object_name='obj'
+in home.html:-
+            <div class="col-sm-6">
+                {% for i in obj %}
+                <div class="p-3 shadow">
+                    <div class="form-group">
+                        <p>Name:{{i.id}}{{i.name}}<img src="{{i.img.url}}"  style="height:30px;width:30px text-align: right;"></p>
+                    </div>
+                     <div class="form-group">
+                        <p>Description:{{i.desc}}</p>
+                    </div>
+                     <div class="form-group">
+                        <p>price:{{i.price}}</p>
+                    </div>
+                     <div class="form-group">
+                        <p>Date:{{i.date}}</p>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger" href="{% url 'delete' i.id %}">delete</a>
+                        <a class="btn btn-success" href="{% url 'update' i.id %}">update</a>
+                        <a class="btn btn-success" href="{% url 'ctask' %}">Gviews</a>
+                        <a class="btn btn-success" href="{% url 'dtask' i.id %}">Detail</a>
 
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
 
 
       
