@@ -335,6 +335,40 @@ in home.html:-
                 </div>
                 {% endfor %}
             </div>
+-----------------------------
+Generic update(cheked ok):-
+in app url:-
+    path('utask/<int:pk>/', views.task_update.as_view(), name='utask'), //dont change pk (its constant)
+views.py:-
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
+
+class task_update(UpdateView):
+    model=shop
+    template_name='update.html'
+    context_object_name='task'
+    fields=('name','desc','price','img','date')
+    def get_success_url(self):
+        return reverse_lazy('utask',kwargs={'pk':self.object.id})
+update.html:-
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="crat-tittle">cart update</h5>
+    </div>
+    <div class="cart-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-success">update</button>
+            <a class="btn btn-success" href="{% url 'home' %}">Home</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+------------------------------------------------
+
 
 
       
