@@ -226,6 +226,23 @@ def print_hello(request):
 <p>not sucess......</p>
 {% endif %}
 {% endfor %}
+ if statement 2:-
+  views.py:-
+  def index(request):
+    number={
+        'num1': 0,
+    }
+    return render(request,'index.html',number)
+  in index.html:-
+          {% if num1 < 0 %}
+        <h3>{{num1}}number is negetive </h3>
+        {% elif num1 > 0 %}
+        <h3>{{num1}}number is positive </h3>
+        {% else %}
+        <h3>{{num1}}number is zeero </h3>
+        {% endif %}
+
+
 -----------------------------------------------------------------------------------------------------------------------
 fountions:-
 def hey(name,frm):
