@@ -424,7 +424,7 @@ def print_hello(request):
         {
         'title':'God Father',
         'year':1994,
-        'sumary':'commady filim',
+        
         'success':False },
         {
         'title':'clonning batchler',
@@ -454,7 +454,7 @@ def print_hello(request):
     {% for obj in moves %}
 <h1>Filim Name:{{obj.title}}</h1>
 <h2>year:{{obj.year}}</h2>
-<h3>sumary:{{obj.sumary}}</h3>
+<h3>sumary:{{obj.sumary | default:'no data available'}}</h3>
 {% if obj.success %}
 <p>success</p>
 {% else %}
