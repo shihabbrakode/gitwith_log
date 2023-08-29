@@ -409,6 +409,62 @@ delete.html:-
      {% endfor %}
 
 {% endblock %}
+----------------------------------------------------------------------------------------
+  dictionary list funtions:-(brototype vedios "part-3 how to write HTML and create movie list i  Django)
+   in viewa.py:-
+      from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+# Create your views here.
+def print_hello(request):
+    movie_data={
+        'moves':[
+        {
+        'title':'God Father',
+        'year':1994,
+        'sumary':'commady filim',
+        'success':False },
+        {
+        'title':'clonning batchler',
+        'year':1996,
+        'sumary':'momooty filim',
+        'success':False },
+        {
+        'title':'Kaboolivala',
+        'year':1998,
+        'sumary':'commady filim',
+        'success':True },
+        {
+        'title':'Vadakkan veeraghada',
+        'year':1992,
+        'sumary':'mammooty filim',
+        'success':True },
+        {
+        'title':'kireedam',
+        'year':1992,
+        'sumary':'Lal filim',
+        'success':True },
+                ]
+    }
+    return render(request,'hello.html',movie_data)
+    --------------------------------------------
+  in html:-
+    {% for obj in moves %}
+<h1>Filim Name:{{obj.title}}</h1>
+<h2>year:{{obj.year}}</h2>
+<h3>sumary:{{obj.sumary}}</h3>
+{% if obj.success %}
+<p>success</p>
+{% else %}
+<p>not sccsess</p>
+{% endif %}
+{%endfor%}
+------------------------------------------------
+      
+      
+      
 
 
 
