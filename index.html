@@ -465,8 +465,23 @@ def print_hello(request):
 {% endif %}
 {%endfor%}
 ------------------------------------------------
-      
-      
+ sleg setup in admin panal:-
+  categery:-
+  in models.py:-
+      from django.db import models
+      from django.template.defaultfilters import slugify
+
+      # Create your models here.
+      class categ(models.Model):
+      name=models.CharField(max_length=200,unique=True)
+      slug=models.SlugField(max_length=200,unique=True)
+    in admi.py:-
+      from django.contrib import admin
+      from . models import *
+      # Register your models here.
+      class catadmin(admin.ModelAdmin)://this register to admin panal
+      prepopulated_fields={'slug':('name',)} //this slug passing
+      admin.site.register(categ,catadmin) //this register to admin panal
       
 
 
