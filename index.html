@@ -500,7 +500,7 @@ class categ(models.Model):
         verbose_name='categery'
         verbose_name_plural='categeries'
     def __str__(self):
-        return '{}'.format(self.name)
+        return '{}'.format(self.name)//name varaan
     
 class product(models.Model):
     name=models.CharField(max_length=200,unique=True)
@@ -529,7 +529,14 @@ admin.site.register(categ,catadmin)
 class prodadmin(admin.ModelAdmin):
      prepopulated_fields={'slug':('name',)}
 admin.site.register(product,prodadmin)
+--------------------------------------------------------------------------
+trungate words and characters:-
+ <p>Desc:{{i.desc|truncatewords:2}}</p> or <p>Desc:{{i.desc|truncatechars:20}}</p> //only 20 charecters disply
+------------------------------------------------------------------------------
 
+
+
+      
     
 
 
