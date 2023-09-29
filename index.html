@@ -533,7 +533,11 @@ admin.site.register(product,prodadmin)
 trungate words and characters:-
  <p>Desc:{{i.desc|truncatewords:2}}</p> or <p>Desc:{{i.desc|truncatechars:20}}</p> //only 20 charecters disply
 ------------------------------------------------------------------------------
-
+fof python shell:-
+>python manage.py shell
+ >from moves_app.models import moveInfo // moveInfo is db name
+  >moveInfo.objects.all()   //take all object
+>moveInfo.objets.get(id=1)   //take one object // id or pk u can use
 
 
       
