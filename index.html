@@ -538,6 +538,28 @@ fof python shell:-
  >from moves_app.models import moveInfo // moveInfo is db name
   >moveInfo.objects.all()   //take all object
 >moveInfo.objets.get(id=1)   //take one object // id or pk u can use
+-----------------------------------------------------------------------------
+      LIST:-
+      thislist = ["apple", "banana", "cherry"]
+      print(len(thislist))
+
+      list1 = ["abc", 34, True, 40, "male"]
+      print(list1)
+      
+      thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+      thislist.sort()
+      print(thislist)
+
+      thislist = [100, 50, 65, 82, 23]
+      thislist.sort(reverse = True)
+      print(thislist)
+
+      def myfunc(n):
+      return abs(n - 82)
+      thislist = [100, 50, 65, 82, 23]
+      thislist.sort(key = myfunc)
+      print(thislist)                    //PRINT 82 IS FIRST
+
 
 
       
