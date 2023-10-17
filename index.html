@@ -539,6 +539,7 @@ fof python shell:-
   >moveInfo.objects.all()   //take all object
 >moveInfo.objets.get(id=1)   //take one object // id or pk u can use
 -----------------------------------------------------------------------------
+      w3school(visit site)
       LIST:-
       thislist = ["apple", "banana", "cherry"]
       print(len(thislist))
@@ -602,6 +603,28 @@ fof python shell:-
       fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
       newlist = [x for x in fruits if "a" in x]
       print(newlist)
+
+      Only accept items that are not "apple":-
+      fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+      newlist = [x for x in fruits if x != "apple"]
+      print(newlist)
+      
+      You can use the range() function to create an iterable:-
+      newlist = [x for x in range(10)]
+      print(newlist)
+
+      Accept only numbers lower than 5:-
+      newlist = [x for x in range(10) if x < 5]
+      print(newlist)
+
+      Set the values in the new list to upper case:-
+      fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+      newlist = [x.upper() for x in fruits]
+      print(newlist)
+
+
+
+
 
 
 
