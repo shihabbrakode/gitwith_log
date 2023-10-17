@@ -560,6 +560,54 @@ fof python shell:-
       thislist.sort(key = myfunc)
       print(thislist)                    //PRINT 82 IS FIRST
 
+      thislist = ["banana", "Orange", "Kiwi", "cherry"]
+      thislist.sort(key = str.lower)
+      print(thislist)
+
+      copy list:-
+      thislist = ["apple", "banana", "cherry"]
+      mylist = thislist.copy()
+      print(mylist)     //just a copy in mylist
+
+      thislist = ["apple", "banana", "cherry"]
+      mylist = list(thislist)
+      print(mylist)
+
+      join list:-
+      list1 = ["a", "b", "c"]
+      list2 = [1, 2, 3]
+      list3 = list1 + list2
+      print(list3)
+
+      Append list2 into list1:-
+      list1 = ["a", "b" , "c"]
+      list2 = [1, 2, 3]
+      for x in list2:
+      list1.append(x)
+      print(list1)
+
+      Use the extend() method to add list2 at the end of list1:-
+      list1 = ["a", "b" , "c"]
+      list2 = [1, 2, 3]
+      list1.extend(list2)
+      print(list1)
+
+      fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+      newlist = []
+      for x in fruits:
+      if "a" in x:
+      newlist.append(x)
+      print(newlist)
+
+      fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+      newlist = [x for x in fruits if "a" in x]
+      print(newlist)
+
+
+
+
+
+
 
 
       
